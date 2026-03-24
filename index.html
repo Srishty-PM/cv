@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Srishty Pahujani — Senior AI/ML Product Manager</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:      #f8fafc;
+      --bg2:     #f1f5f9;
+      --bg3:     #e8eef5;
+      --card:    #ffffff;
+      --border:  #e2e8f0;
+      --border2: #cbd5e1;
+      --accent:  #0284c7;
+      --accent2: #6366f1;
+      --accent3: #059669;
+      --accent-soft:  rgba(2,132,199,0.08);
+      --accent2-soft: rgba(99,102,241,0.08);
+      --accent3-soft: rgba(5,150,105,0.08);
+      --text:    #0f172a;
+      --muted:   #475569;
+      --muted2:  #94a3b8;
+      --shadow:  0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.05);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 2.5rem;
+      background: rgba(248,250,252,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      height: 62px;
+    }
+    .nav-name { font-weight: 800; font-size: 1rem; color: var(--text); letter-spacing: -0.03em; }
+    .nav-name span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.85rem;
+      font-weight: 500; transition: color 0.18s; letter-spacing: 0.01em;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent); color: #fff; padding: 0.45rem 1.15rem;
+      border-radius: 7px; font-size: 0.82rem; font-weight: 600;
+      text-decoration: none; transition: background 0.18s, transform 0.18s;
+    }
+    .nav-cta:hover { background: #0369a1; transform: translateY(-1px); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 110px 2.5rem 70px;
+      position: relative; overflow: hidden;
+      background: linear-gradient(160deg, #f0f7ff 0%, #f8fafc 55%, #f5f0ff 100%);
+    }
+    .hero-dots {
+      position: absolute; inset: 0; opacity: 0.35;
+      background-image: radial-gradient(var(--border2) 1.5px, transparent 1.5px);
+      background-size: 32px 32px;
+    }
+    .hero-content { max-width: 820px; position: relative; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--accent-soft); border: 1px solid rgba(2,132,199,0.2);
+      padding: 0.38rem 0.95rem; border-radius: 100px;
+      font-size: 0.78rem; font-weight: 600; color: var(--accent);
+      margin-bottom: 1.6rem; letter-spacing: 0.03em;
+    }
+    .hero-badge::before {
+      content: ''; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent3); animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.4; transform: scale(1.4); }
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+      font-weight: 800; letter-spacing: -0.04em; line-height: 1.08;
+      color: var(--text); margin-bottom: 0.4rem;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-title {
+      font-size: 1.1rem; color: var(--muted); font-weight: 400;
+      margin-bottom: 1.6rem; letter-spacing: -0.01em;
+    }
+    .hero-title strong { color: var(--text); font-weight: 600; }
+    .hero-desc {
+      font-size: 1.05rem; color: var(--muted); max-width: 640px;
+      line-height: 1.78; margin-bottom: 2.5rem;
+    }
+    .hero-desc em { color: var(--accent3); font-style: normal; font-weight: 600; }
+    .hero-actions { display: flex; gap: 0.85rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--accent); color: #fff; padding: 0.72rem 1.5rem;
+      border-radius: 8px; font-weight: 700; font-size: 0.88rem;
+      text-decoration: none; transition: all 0.18s; letter-spacing: -0.01em;
+      box-shadow: 0 2px 8px rgba(2,132,199,0.25);
+    }
+    .btn-primary:hover { background: #0369a1; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(2,132,199,0.3); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--card); color: var(--text); padding: 0.72rem 1.5rem;
+      border-radius: 8px; font-weight: 600; font-size: 0.88rem;
+      text-decoration: none; transition: all 0.18s;
+      border: 1px solid var(--border2); box-shadow: var(--shadow);
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; gap: 1.5rem;
+      font-size: 0.82rem; color: var(--muted2);
+    }
+    .hero-meta a { color: var(--muted); text-decoration: none; transition: color 0.18s; }
+    .hero-meta a:hover { color: var(--accent); }
+    .hero-meta span::before { content: '·'; margin-right: 1.5rem; color: var(--border2); }
+    .hero-meta span:first-child::before { content: none; }
+
+    /* ===== METRICS ===== */
+    .metrics { padding: 0 2.5rem 5rem; max-width: 1100px; margin: 0 auto; }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+      border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .metric {
+      background: var(--card);
+      padding: 1.8rem 1.5rem;
+      display: flex; flex-direction: column; gap: 0.3rem;
+      border-right: 1px solid var(--border);
+      transition: background 0.18s;
+    }
+    .metric:last-child { border-right: none; }
+    .metric:hover { background: #f0f7ff; }
+    .metric-value {
+      font-size: 2rem; font-weight: 800; letter-spacing: -0.04em;
+      color: var(--text); line-height: 1;
+    }
+    .metric-value.teal   { color: var(--accent); }
+    .metric-value.purple { color: var(--accent2); }
+    .metric-value.green  { color: var(--accent3); }
+    .metric-label   { font-size: 0.78rem; color: var(--muted); font-weight: 500; line-height: 1.4; }
+    .metric-company { font-size: 0.7rem; color: var(--muted2); font-family: 'JetBrains Mono', monospace; margin-top: 0.2rem; }
+
+    /* ===== SECTION COMMON ===== */
+    section { padding: 5rem 2.5rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 0.65rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800;
+      letter-spacing: -0.035em; color: var(--text); margin-bottom: 0.65rem;
+    }
+    .section-sub {
+      font-size: 0.98rem; color: var(--muted); max-width: 540px;
+      line-height: 1.72; margin-bottom: 3rem;
+    }
+
+    /* ===== EXPERIENCE ===== */
+    .exp-section { background: var(--bg2); }
+    .timeline { position: relative; padding-left: 1.75rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 14px; bottom: 14px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+      border-radius: 2px;
+    }
+    .exp-item {
+      position: relative; margin-bottom: 2rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .exp-item:hover { box-shadow: var(--shadow-lg); border-color: rgba(2,132,199,0.25); }
+    .exp-item::before {
+      content: ''; position: absolute; left: -2.08rem; top: 22px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent); border: 2.5px solid var(--bg2);
+      box-shadow: 0 0 0 3px rgba(2,132,199,0.15);
+    }
+    .exp-header {
+      padding: 1.5rem 1.5rem 0;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 0.5rem;
+    }
+    .exp-role    { font-size: 1rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+    .exp-company {
+      font-size: 0.88rem; font-weight: 600; color: var(--accent); margin-top: 0.2rem;
+      text-decoration: none;
+    }
+    .exp-company:hover { text-decoration: underline; }
+    .exp-period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; color: var(--muted2); white-space: nowrap;
+      background: var(--bg2); padding: 0.28rem 0.7rem; border-radius: 5px;
+      border: 1px solid var(--border);
+    }
+    .exp-context { padding: 0.5rem 1.5rem 0; font-size: 0.81rem; color: var(--muted); font-style: italic; }
+    .exp-bullets { padding: 1rem 1.5rem 1.5rem; list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .exp-bullets li {
+      font-size: 0.87rem; color: var(--muted); line-height: 1.65;
+      padding-left: 1.1rem; position: relative;
+    }
+    .exp-bullets li::before { content: '›'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+    .exp-bullets li strong { color: var(--text); font-weight: 600; }
+    .tag {
+      display: inline-block; font-size: 0.68rem; font-weight: 600;
+      padding: 0.1rem 0.48rem; border-radius: 4px; margin-left: 0.3rem;
+      letter-spacing: 0.02em; vertical-align: middle;
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--accent-soft); color: var(--accent);
+    }
+    .tag.purple { background: var(--accent2-soft); color: var(--accent2); }
+    .tag.green  { background: var(--accent3-soft); color: var(--accent3); }
+
+    /* ===== PROJECTS ===== */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.4rem;
+    }
+    .project-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.75rem;
+      display: flex; flex-direction: column; gap: 0.9rem;
+      transition: all 0.2s; text-decoration: none; color: inherit;
+      box-shadow: var(--shadow);
+    }
+    .project-card:hover {
+      border-color: rgba(2,132,199,0.3); transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    .project-icon {
+      width: 46px; height: 46px; border-radius: 11px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+    }
+    .project-icon.blue   { background: var(--accent-soft); }
+    .project-icon.purple { background: var(--accent2-soft); }
+    .project-icon.green  { background: var(--accent3-soft); }
+    .project-title { font-size: 1rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+    .project-tech  { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tech-tag {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.67rem; font-weight: 500;
+      padding: 0.18rem 0.52rem; border-radius: 4px;
+      background: var(--bg2); color: var(--muted); border: 1px solid var(--border);
+    }
+    .project-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; flex: 1; }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-size: 0.8rem; font-weight: 600; color: var(--accent); margin-top: auto;
+    }
+
+    /* ===== SKILLS ===== */
+    .skills-section { background: var(--bg2); }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.4rem;
+    }
+    .skill-group {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.5rem; box-shadow: var(--shadow);
+    }
+    .skill-group-title {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.09em;
+      text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .skill-group-title.teal   { color: var(--accent); }
+    .skill-group-title.purple { color: var(--accent2); }
+    .skill-group-title.green  { color: var(--accent3); }
+    .skill-group-title.orange { color: #d97706; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .skill-pill {
+      background: var(--bg2); color: var(--muted); font-size: 0.77rem;
+      font-weight: 500; padding: 0.28rem 0.72rem; border-radius: 100px;
+      border: 1px solid var(--border);
+    }
+
+    /* ===== EDUCATION ===== */
+    .edu-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.4rem;
+    }
+    .edu-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.5rem;
+      display: flex; flex-direction: column; gap: 0.45rem;
+      box-shadow: var(--shadow);
+    }
+    .edu-icon   { font-size: 1.6rem; margin-bottom: 0.3rem; }
+    .edu-degree { font-size: 0.95rem; font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
+    .edu-school {
+      font-size: 0.84rem; color: var(--accent); font-weight: 500;
+      text-decoration: none;
+    }
+    .edu-school:hover { text-decoration: underline; }
+    .edu-year { font-size: 0.72rem; color: var(--muted2); font-family: 'JetBrains Mono', monospace; }
+    .edu-note  { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+    /* ===== CONTACT ===== */
+    .contact-section {
+      background: linear-gradient(160deg, #f0f7ff 0%, #f5f0ff 100%);
+      border-top: 1px solid var(--border);
+    }
+    .contact-inner { max-width: 620px; margin: 0 auto; text-align: center; }
+    .contact-inner .section-title { margin-bottom: 2rem; }
+    .contact-links {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.85rem;
+    }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.72rem 1.4rem; border-radius: 8px; font-weight: 600;
+      font-size: 0.88rem; text-decoration: none; transition: all 0.18s;
+    }
+    .contact-link.email {
+      background: var(--accent); color: #fff;
+      box-shadow: 0 2px 8px rgba(2,132,199,0.25);
+    }
+    .contact-link.email:hover { background: #0369a1; }
+    .contact-link.linkedin {
+      background: var(--card); color: var(--text);
+      border: 1px solid var(--border2); box-shadow: var(--shadow);
+    }
+    .contact-link.linkedin:hover { border-color: var(--accent); color: var(--accent); }
+    .contact-link.github {
+      background: var(--card); color: var(--text);
+      border: 1px solid var(--border2); box-shadow: var(--shadow);
+    }
+    .contact-link.github:hover { border-color: var(--accent2); color: var(--accent2); }
+    .contact-link.stylst {
+      background: var(--card); color: var(--text);
+      border: 1px solid var(--border2); box-shadow: var(--shadow);
+    }
+    .contact-link.stylst:hover { border-color: var(--accent3); color: var(--accent3); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 2rem; text-align: center;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem; color: var(--muted2);
+      background: var(--bg);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero h1 { font-size: 2.4rem; }
+      .hero-actions { flex-direction: column; }
+      .btn-primary, .btn-secondary { justify-content: center; }
+      .metric { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-name">Srishty <span>Pahujani</span></div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:pahujani.srishty@gmail.com">Get in touch</a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero-dots"></div>
+  <div class="hero-content">
+    <div class="hero-badge">London, UK · Senior &amp; Principal PM · AI/ML</div>
+    <h1>Srishty<br><span class="highlight">Pahujani</span></h1>
+    <p class="hero-title">
+      <strong>Senior AI/ML Product Manager</strong> · End-to-End ML Lifecycle · 11+ Years
+    </p>
+    <p class="hero-desc">
+      I build AI products that earn trust in production — from <em>Contrastive Learning anomaly detection</em>
+      and LLM agentic systems to $100M SaaS platforms and EMEA partner programmes.
+      Currently leading <a href="https://www.tesco.com/zones/tesco-technology" target="_blank" rel="noopener" style="color:var(--accent3);font-weight:600;text-decoration:none;">Tesco's</a> Cyber Data Intelligence Platform;
+      completing PG Certificate in ML&nbsp;&amp;&nbsp;AI at <a href="https://www.cam.ac.uk" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;text-decoration:none;">Cambridge</a>.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="https://www.linkedin.com/in/srishtypahujani" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a class="btn-secondary" href="https://github.com/Srishty-PM" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        GitHub
+      </a>
+      <a class="btn-secondary" href="https://stylst.lovable.app" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+        Stylst App
+      </a>
+    </div>
+    <div class="hero-meta">
+      <span>📍 London, UK</span>
+      <span><a href="mailto:pahujani.srishty@gmail.com">pahujani.srishty@gmail.com</a></span>
+      <span>+44 7552 978801</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== METRICS ===== -->
+<div class="metrics reveal">
+  <div class="metrics-grid">
+    <div class="metric">
+      <div class="metric-value teal">£1.2M</div>
+      <div class="metric-label">Cost savings, Year 1</div>
+      <div class="metric-company">Amazon · EMEA Insurance</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">10,000+</div>
+      <div class="metric-label">ML behavioural baselines built</div>
+      <div class="metric-company">Tesco · UEBA</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value purple">$100M</div>
+      <div class="metric-label">Revenue platform delivered</div>
+      <div class="metric-company">Elsevier · 11 months</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value green">94%</div>
+      <div class="metric-label">Fraud reduction</div>
+      <div class="metric-company">Paytm · Buy Box redesign</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value teal">22%</div>
+      <div class="metric-label">LTV lift via collaborative filtering</div>
+      <div class="metric-company">Amazon · Rec Engine</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">&lt;50</div>
+      <div class="metric-label">Targeted ML alerts/month</div>
+      <div class="metric-company">Tesco · vs thousands before</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== EXPERIENCE ===== -->
+<section class="exp-section" id="experience">
+  <div class="container">
+    <p class="section-label">Career</p>
+    <h2 class="section-title">Experience</h2>
+    <p class="section-sub">11+ years shipping AI/ML products across cybersecurity, fintech, e-commerce, and academic publishing.</p>
+    <div class="timeline">
+
+      <!-- Tesco -->
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Lead Product Manager — AI/ML &amp; Cyber Data Platform</div>
+            <a class="exp-company" href="https://www.tesco.com/zones/tesco-technology" target="_blank" rel="noopener">Tesco Technologies</a>
+          </div>
+          <div class="exp-period">Dec 2022 — Present</div>
+        </div>
+        <div class="exp-context">Product owner of CDIP — Tesco's internal cybersecurity analytics platform. 2 squads · 12+ engineers &amp; data scientists · UK &amp; India.</div>
+        <ul class="exp-bullets">
+          <li>
+            <strong>UEBA — ML Anomaly Detection:</strong> Designed Tesco's first ML-driven behavioural security system. Built Digital Fingerprinting from 6 unified data sources; selected <span class="tag">Contrastive Learning</span> over Isolation Forest/k-means for scalability. Co-designed soft-labelling via 8 severity-ranked anomaly flags — enabling training with zero ground-truth labels. Phase 1: 10,000+ baselines built; &lt;50 targeted alerts/month. Evaluation: MCC alongside F1 &amp; AUC for class imbalance.
+          </li>
+          <li>
+            <strong>LLM-Powered SOC Alert Layer</strong> <span class="tag purple">Phase 2 · In Build</span>: Defined product vision for <span class="tag purple">GenAI/LLM</span> integration on XSOAR — conversational alert querying, prompt engineering, hallucination guardrail design, LLM output evaluation framework, and human-in-the-loop escalation. North star: investigation time from hours → minutes.
+          </li>
+          <li>
+            <strong>Layered Defence Model (LDM):</strong> Automated 400+ cybersecurity control calculations via Control Editor Panel with 6 embedded formulas and <span class="tag">RAG status logic</span> — eliminating spreadsheet-based compliance assessment across Tesco subsidiaries.
+          </li>
+          <li>
+            <strong>Security Lake &amp; Data Quality:</strong> Delivered data governance model tracking success/failure rates across <span class="tag green">260+ data sources</span>. Defined Data Quality as a product workstream with roadmap, OKRs, and end-to-end delivery.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Amazon -->
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Senior Product Manager — Freight Partner Insurance &amp; Analytics</div>
+            <a class="exp-company" href="https://www.amazon.co.uk" target="_blank" rel="noopener">Amazon</a>
+          </div>
+          <div class="exp-period">Jan 2021 — Nov 2022</div>
+        </div>
+        <div class="exp-context">Full 0-to-1 ownership of AAIP insurance programme and claims analytics for Amazon's 1,300+ truck freight partners across 7 EU markets.</div>
+        <ul class="exp-bullets">
+          <li>
+            <strong>AAIP Insurance Product</strong> <span class="tag green">£1.2M Year 1 savings</span>: Replaced legacy brokers across 7 EU markets. Achieved 38% per-truck cost reduction ($8,500 → $5,300) and £3M projected Year 2 savings through direct insurer relationships — full compliance, claims, and finance integration.
+          </li>
+          <li>
+            <strong>FNOL Claims Dashboard — <span class="tag">NLP</span></strong> <span class="tag green">300 → 75 annual claims</span>: Real-time mobile incident reporting with NLP-powered claims categorisation. Germany: 35 → 7 claims in one month after hotspot identified. +27% adoption, 55% CSAT improvement.
+          </li>
+          <li>
+            <strong>Recommendation Engine — <span class="tag purple">Collaborative Filtering</span></strong> <span class="tag green">22% LTV lift</span>: Hybrid model delivering £3.2M incremental revenue, £43 AOV increase, 18% conversion lift. Ran 40+ concurrent A/B tests with pre-agreed success criteria.
+          </li>
+          <li>
+            <strong>Loyalty &amp; Retention</strong> <span class="tag green">90% retention vs 75–80% benchmark</span>: Tiered loyalty programme, 92%+ push notification opt-in, 15% monthly recovery of churned partners. Managed £500K+ acquisition budget at 3.5x+ ROAS.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Elsevier -->
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Product Manager — Journal Homepages Platform</div>
+            <a class="exp-company" href="https://www.elsevier.com" target="_blank" rel="noopener">Elsevier</a>
+          </div>
+          <div class="exp-period">Sep 2019 — Dec 2021</div>
+        </div>
+        <div class="exp-context">Secured $950K funding and delivered a $100M revenue platform from zero — 5M monthly visitors across 3,500 scientific journals — on budget in 11 months.</div>
+        <ul class="exp-bullets">
+          <li>
+            <strong>0-to-1 Platform Launch</strong> <span class="tag green">$100M revenue</span>: 28% submission conversion and 64% engagement rate within first month of GTM. Sole PM; authored the $950K business case.
+          </li>
+          <li>
+            <strong>Clarivate Metrics Framework:</strong> First external PM to introduce a novel quality-signal concept through the <a href="https://clarivate.com" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">Clarivate</a> academic regulatory body — influencing without authority at an institutional level.
+          </li>
+          <li>
+            <strong>China Geo-Optimisation:</strong> Identified China as 48% of traffic. Cut load time 4.5s → 2.8s; A/B test +11% engagement, +6% conversion. Adopted as the standard framework for all subsequent international features.
+          </li>
+          <li>
+            <strong>Platform Data Governance:</strong> Identified a silent 6% engagement decline invisible to standard reporting — no user complaints had surfaced. Introduced Pendo behavioural segmentation that became standard practice across Elsevier publisher platforms.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Paytm -->
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Senior Product Manager — Marketplace</div>
+            <a class="exp-company" href="https://www.paytm.com" target="_blank" rel="noopener">Paytm</a>
+          </div>
+          <div class="exp-period">Nov 2015 — Aug 2019</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>
+            <strong>Buy Box Algorithm Redesign</strong> <span class="tag green">94% fraud reduction</span>: Root-caused 600 monthly counterfeit complaints to a price-weighted algorithm. Redesigned to incorporate seller rating, tenure, and verified status. Complaints: 600 → 35/month; GMV from -10% to positive within the quarter.
+          </li>
+          <li>
+            <strong>Seller Trust Ecosystem</strong> <span class="tag">+30% sales · +20% retention</span>: Designed Verified Badge system, Gold/Silver/Bronze loyalty tiers, Adobe Analytics fraud alert system, and seller community forum.
+          </li>
+          <li>
+            <strong>Assortment Turnaround</strong> <span class="tag green">GMV target exceeded 30%</span>: Identified 362 products present on competitor first pages but absent from Paytm. Sourced all 362 from verified vendors in 40 days. £450K budget at 15% YoY ROAS improvement.
+          </li>
+        </ul>
+      </div>
+
+      <!-- ShopClues -->
+      <div class="exp-item reveal">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Category Manager — Marketplace Growth</div>
+            <a class="exp-company" href="https://www.shopclues.com" target="_blank" rel="noopener">ShopClues</a>
+          </div>
+          <div class="exp-period">Dec 2014 — Oct 2015</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>
+            <strong>150% YoY growth · £40M revenue:</strong> Led 3-person cross-functional team; launched 6 brands and 42 SKUs; built hour-by-zip-code demand plans from purchase pattern analysis; achieved 94.6% inventory accuracy.
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label">Selected Work</p>
+    <h2 class="section-title">Projects &amp; Side Builds</h2>
+    <p class="section-sub">Hands-on AI products built outside of work — demonstrating 0→1 execution and LLM product thinking.</p>
+    <div class="projects-grid">
+
+      <a class="project-card reveal" href="https://github.com/Srishty-PM/product-framework-agent" target="_blank" rel="noopener">
+        <div class="project-icon blue">🤖</div>
+        <div class="project-title">PM Framework Agent</div>
+        <div class="project-tech">
+          <span class="tech-tag">Claude API</span>
+          <span class="tech-tag">Vanilla JS</span>
+          <span class="tech-tag">GitHub Pages</span>
+          <span class="tech-tag">Open Source</span>
+        </div>
+        <p class="project-desc">
+          Open-source AI agent that runs any product problem through 10 structured PM frameworks — ML opportunity mapping, RICE, segmentation, north star metrics — and auto-generates a downloadable PRD. Built end-to-end on the <a href="https://www.anthropic.com/api" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:var(--accent);">Claude API</a> and deployed live on GitHub Pages.
+        </p>
+        <span class="project-link">View on GitHub →</span>
+      </a>
+
+      <a class="project-card reveal" href="https://stylst.lovable.app" target="_blank" rel="noopener">
+        <div class="project-icon purple">✨</div>
+        <div class="project-title">Stylst — AI Personal Stylist</div>
+        <div class="project-tech">
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">Lovable</span>
+          <span class="tech-tag">Capacitor</span>
+          <span class="tech-tag">AI</span>
+        </div>
+        <p class="project-desc">
+          AI-powered personal stylist app targeting UK App Store launch via Capacitor. Full PM ownership: discovery, roadmap, build, and GTM. Defined freemium model (free tier → £9.99/month). Building in public on <a href="https://www.linkedin.com/in/srishtypahujani" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:var(--accent);">LinkedIn</a>.
+        </p>
+        <span class="project-link">Try Stylst →</span>
+      </a>
+
+      <div class="project-card reveal" style="cursor:default;">
+        <div class="project-icon green">🛡️</div>
+        <div class="project-title">Tesco CDIP — LLM Agentic Layer</div>
+        <div class="project-tech">
+          <span class="tech-tag">LLM/GenAI</span>
+          <span class="tech-tag">XSOAR</span>
+          <span class="tech-tag">RAG</span>
+          <span class="tech-tag">Prompt Engineering</span>
+          <span class="tech-tag">MCP</span>
+        </div>
+        <p class="project-desc">
+          Defined product vision and spec for LLM-powered conversational alert querying on Tesco's security operations platform. Covers hallucination guardrails, human-in-the-loop escalation, RAG pipeline design, and LLM output evaluation framework. Currently in build.
+        </p>
+        <span class="project-link" style="color:var(--muted2);">Internal · Tesco Technologies</span>
+      </div>
+
+      <div class="project-card reveal" style="cursor:default;">
+        <div class="project-icon blue">🧠</div>
+        <div class="project-title">Tesco UEBA — Contrastive Learning</div>
+        <div class="project-tech">
+          <span class="tech-tag">Contrastive Learning</span>
+          <span class="tech-tag">Azure Databricks</span>
+          <span class="tech-tag">Soft Labelling</span>
+          <span class="tech-tag">MCC · F1 · AUC</span>
+        </div>
+        <p class="project-desc">
+          Designed Tesco's first ML-driven behavioural security product. Selected Contrastive Learning for imbalanced anomaly detection with zero ground-truth labels. 10,000+ baselines built; &lt;50 targeted alerts/month vs thousands of rule-based noise previously.
+        </p>
+        <span class="project-link" style="color:var(--muted2);">Internal · Tesco Technologies</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section class="skills-section" id="skills">
+  <div class="container">
+    <p class="section-label">Capabilities</p>
+    <h2 class="section-title">Skills</h2>
+    <p class="section-sub">Technical breadth across the full ML lifecycle, paired with commercial PM rigour.</p>
+    <div class="skills-grid">
+      <div class="skill-group reveal">
+        <div class="skill-group-title teal">AI / ML Product</div>
+        <div class="skill-tags">
+          <span class="skill-pill">LLM / GenAI</span>
+          <span class="skill-pill">Prompt Engineering</span>
+          <span class="skill-pill">RAG</span>
+          <span class="skill-pill">Contrastive Learning</span>
+          <span class="skill-pill">Anomaly Detection</span>
+          <span class="skill-pill">NLP</span>
+          <span class="skill-pill">Recommendation Engines</span>
+          <span class="skill-pill">Model Evaluation</span>
+          <span class="skill-pill">Shadow Deployment</span>
+          <span class="skill-pill">MCC / F1 / AUC</span>
+          <span class="skill-pill">Semi-supervised Learning</span>
+          <span class="skill-pill">A/B Testing</span>
+          <span class="skill-pill">Collaborative Filtering</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title purple">Product Leadership</div>
+        <div class="skill-tags">
+          <span class="skill-pill">0-to-1 Strategy</span>
+          <span class="skill-pill">Product Vision</span>
+          <span class="skill-pill">Roadmapping</span>
+          <span class="skill-pill">PRD / BRD</span>
+          <span class="skill-pill">User Research</span>
+          <span class="skill-pill">OKRs</span>
+          <span class="skill-pill">RICE Prioritisation</span>
+          <span class="skill-pill">GTM</span>
+          <span class="skill-pill">Cross-functional Leadership</span>
+          <span class="skill-pill">Stakeholder Management</span>
+          <span class="skill-pill">Business Case Writing</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title green">Platforms &amp; Tools</div>
+        <div class="skill-tags">
+          <span class="skill-pill">Azure Databricks</span>
+          <span class="skill-pill">XSOAR</span>
+          <span class="skill-pill">Pendo</span>
+          <span class="skill-pill">Tableau</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">Unity Catalog</span>
+          <span class="skill-pill">Agile / Scrum</span>
+          <span class="skill-pill">Claude API</span>
+          <span class="skill-pill">GitHub</span>
+          <span class="skill-pill">React</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title orange">Domain Expertise</div>
+        <div class="skill-tags">
+          <span class="skill-pill">Cybersecurity</span>
+          <span class="skill-pill">IAM / UEBA</span>
+          <span class="skill-pill">InsurTech</span>
+          <span class="skill-pill">B2B SaaS</span>
+          <span class="skill-pill">FinTech</span>
+          <span class="skill-pill">EMEA Expansion</span>
+          <span class="skill-pill">Marketplace</span>
+          <span class="skill-pill">Data Governance</span>
+          <span class="skill-pill">Compliance</span>
+          <span class="skill-pill">Academic Publishing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDUCATION ===== -->
+<section id="education">
+  <div class="container">
+    <p class="section-label">Academic Background</p>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-degree">PG Certificate in Machine Learning &amp; AI</div>
+        <a class="edu-school" href="https://www.cam.ac.uk" target="_blank" rel="noopener">University of Cambridge</a>
+        <div class="edu-year">Expected August 2026</div>
+        <div class="edu-note">Covers LLMs, RAG, agentic architectures, model evaluation, and responsible AI — directly applied to product work at Tesco.</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-degree">MBA with Distinction</div>
+        <a class="edu-school" href="https://www.tilburguniversity.edu/tias" target="_blank" rel="noopener">TIAS School of Business &amp; Society, Tilburg University</a>
+        <div class="edu-year">2019</div>
+        <div class="edu-note">Strategy, international business, and product commercialisation. Funded business cases across Elsevier and Amazon.</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-degree">B.Sc (Hons) Biological Sciences</div>
+        <a class="edu-school" href="https://www.du.ac.in" target="_blank" rel="noopener">Sri Venkateshwara College, University of Delhi</a>
+        <div class="edu-year">2012</div>
+        <div class="edu-note">Analytical and experimental foundation — underpins rigorous approach to model evaluation and hypothesis-driven product development.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-inner reveal">
+      <p class="section-label" style="text-align:center;">Get In Touch</p>
+      <h2 class="section-title">Let's Connect</h2>
+      <div class="contact-links">
+        <a class="contact-link email" href="mailto:pahujani.srishty@gmail.com">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          pahujani.srishty@gmail.com
+        </a>
+        <a class="contact-link linkedin" href="https://www.linkedin.com/in/srishtypahujani" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a class="contact-link github" href="https://github.com/Srishty-PM" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          GitHub
+        </a>
+        <a class="contact-link stylst" href="https://stylst.lovable.app" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+          Stylst App
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>Srishty Pahujani · London, UK · <a href="mailto:pahujani.srishty@gmail.com">pahujani.srishty@gmail.com</a> · <a href="https://www.linkedin.com/in/srishtypahujani" target="_blank" rel="noopener">linkedin.com/in/srishtypahujani</a></p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 55);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+    });
+  });
+</script>
+</body>
+</html>
